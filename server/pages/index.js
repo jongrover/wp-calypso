@@ -106,6 +106,7 @@ function getCurrentCommitShortChecksum() {
 }
 
 function getDefaultContext( request ) {
+	const participantInPushNotificationsAbTest = config.isEnabled('push-notifications-ab-test') && abtest('browserNotifications') === 'enabled';
 	var context = Object.assign( {}, request.context, {
 		compileDebug: config( 'env' ) === 'development' ? true : false,
 		urls: generateStaticUrls( request ),
@@ -122,7 +123,7 @@ function getDefaultContext( request ) {
 		abTestHelper: !! config.isEnabled( 'dev/test-helper' ),
 		devDocsURL: '/devdocs',
 		catchJsErrors: '/calypso/catch-js-errors-' + 'v2' + '.min.js',
-		isPushEnabled: !! ( ( config.isEnabled( 'push-notifications' ) || ( config.isEnabled( 'push-notifications-ab-test' ) && abtest( 'browserNotifications' ) === 'enabled' ) ) ),
+		isPushEnabled: !! ( config.isEnabled( 'push-notifications' ) || participantInPushNotificationsAbTest ),
 	} );
 
 	context.app = {
