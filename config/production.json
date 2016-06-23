@@ -69,7 +69,7 @@
 		"press-this": true,
 		"preview-layout": true,
 		"preview-endpoint": false,
-		"push-notifications-ab-test": true,
+		"push-notifications-ab-test": false,
 		"reader": true,
 		"reader/full-errors": false,
 		"reader/tags-with-elasticsearch": false,
