@@ -2,8 +2,11 @@ function root() {
 	return '/plans';
 }
 
-function plans( siteName = ':site', intervalType = ':intervalType?' ) {
-	return root() + `/${ intervalType }` + `/${ siteName }`;
+function plans( siteName = ':site', intervalType ) {
+	if ( intervalType ) {
+		return `${ root() }/${ intervalType }/${ siteName }`;
+	}
+	return `${ root() }/${ siteName }`;
 }
 
 function plansDestination( siteName = ':site', destinationType = ':destinationType?' ) {
