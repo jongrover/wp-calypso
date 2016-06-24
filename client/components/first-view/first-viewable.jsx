@@ -4,11 +4,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-/**
- * Internal dependencies
- */
-import FirstView from './';
-
 export default React.createClass( {
 	getInitialState() {
 		return {
