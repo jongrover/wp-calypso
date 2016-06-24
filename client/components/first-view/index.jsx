@@ -19,7 +19,7 @@ export default React.createClass( {
 
 	componentDidMount() {
 		if ( this.props.firstViewActive ) {
-			document.documentElement.classList.add( 'no-scroll' );
+			this.preventPageScrolling();
 		}
 	},
 
@@ -32,14 +32,14 @@ export default React.createClass( {
 
 	componentDidUpdate() {
 		if ( this.props.firstViewActive ) {
-			document.documentElement.classList.add( 'no-scroll' );
+			this.preventPageScrolling();
 		} else {
-			document.documentElement.classList.remove( 'no-scroll' );
+			this.allowPageScrolling();
 		}
 	},
 
 	componentWillUnmount() {
-		document.documentElement.classList.remove( 'no-scroll' );
+		this.allowPageScrolling();
 	},
 
 	render: function() {
@@ -77,5 +77,13 @@ export default React.createClass( {
 
 	removeChildren: function() {
 		this.setState( { renderChildren: false } );
+	},
+
+	preventPageScrolling: function() {
+		document.documentElement.classList.add( 'no-scroll' );
+	},
+
+	allowPageScrolling: function() {
+		document.documentElement.classList.remove( 'no-scroll' );
 	}
 } );
