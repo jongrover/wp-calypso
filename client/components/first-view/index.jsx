@@ -55,7 +55,7 @@ export default React.createClass( {
 							{ this.props.children }
 						</div>
 
-						<Button onClick={ this.onDismiss }>Got it!</Button>
+						<Button onClick={ this.dismiss }>Got it!</Button>
 
 						<div className="first-view__hide-preference">
 							<label>
@@ -69,7 +69,7 @@ export default React.createClass( {
 		);
 	},
 
-	onDismiss: function() {
+	dismiss: function() {
 		if ( this.props.onFirstViewDismiss ) {
 			this.props.onFirstViewDismiss();
 		}
